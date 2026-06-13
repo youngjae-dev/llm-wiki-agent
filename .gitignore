@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+
+# macOS
+.DS_Store
+
+# Raw PDF files (too large, not needed for clone)
+raw/**/*.pdf
+
+# Pipeline workspace (generated artifacts)
+pipeline/workspace/
+
+# Streamlit cache
+.streamlit/
+
+# Editor
+.vscode/
+.idea/
+*.swp
