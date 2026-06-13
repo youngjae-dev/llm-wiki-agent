@@ -267,7 +267,8 @@ SCHEMA.md         ← 위키 구조 규약 (프론트매터, 파일명, 태그)
 
 아래는 시스템 아키텍처 설계 지식 베이스를 이 도구로 서빙한 화면입니다.
 
-![demo](demo/screenshot.png)
+<img width="2940" height="1912" alt="screenshot" src="https://github.com/user-attachments/assets/1f7f79cf-f6b3-4c8f-9528-d7a8e7c72527" />
+
 
 - 좌측: 도메인별 위키 페이지 목록 + 검색
 - 중앙: 위키 내용 (태그 뱃지, 메타데이터, Markdown 렌더링)
