@@ -5,9 +5,9 @@
 
 ---
 
-## 30분 퀵스타트
+## 사용방법
 
-> ⏱️ 이 가이드를 따라하면 **30분 안에 자신의 자료 1건으로 첫 위키 페이지를 만들고 화면에서 확인**할 수 있습니다.
+> 이 가이드를 따라하면 **자신의 자료 1건으로 첫 위키 페이지를 만들고 화면에서 확인**할 수 있습니다.
 
 ### Step 0 — 사전 요구사항
 
@@ -17,7 +17,7 @@
 | Claude CLI | `claude --version` | `npm i -g @anthropic-ai/claude-code` |
 | poppler (PDF용) | `pdftotext -v` | `brew install poppler` (macOS) |
 
-### Step 1 — 클론 및 설치 (2분)
+### Step 1 — 클론 및 설치
 
 ```bash
 git clone https://github.com/<your-username>/llm-wiki-agent.git
@@ -25,7 +25,7 @@ cd llm-wiki-agent
 pip install streamlit fastmcp
 ```
 
-### Step 2 — 자신의 자료 추가 (3분)
+### Step 2 — 자신의 자료 추가
 
 `raw/` 폴더에 자신의 파일을 넣습니다.
 
@@ -37,7 +37,7 @@ cp ~/내문서.md raw/
 cp ~/내자료.pdf raw/
 ```
 
-### Step 3 — 위키 페이지 생성 (10분)
+### Step 3 — 위키 페이지 생성
 
 **방법 A: Claude Code에서 SKILL 실행 (권장)**
 
@@ -59,7 +59,7 @@ python pipeline/ingest.py "raw/내문서.md"
 python pipeline/ingest.py --all
 ```
 
-### Step 4 — 뷰어에서 확인 (2분)
+### Step 4 — 뷰어에서 확인
 
 ```bash
 streamlit run tools/app.py
