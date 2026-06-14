@@ -151,9 +151,11 @@ llm-wiki-agent/
 `~/Library/Application Support/Claude/claude_desktop_config.json`:
 
 ```bash
-# 절대경로 확인 방법
+# 1. 절대경로 확인
 cd llm-wiki-agent && pwd
-# 예: /Users/yourname/llm-wiki-agent
+# 출력 예: /Users/shin/llm-wiki-agent
+
+# 2. 아래 JSON에서 <REPO_PATH> 부분을 위 출력값으로 교체
 ```
 
 ```json
@@ -161,7 +163,20 @@ cd llm-wiki-agent && pwd
   "mcpServers": {
     "wiki": {
       "command": "python3",
-      "args": ["/Users/yourname/llm-wiki-agent/tools/mcp_server.py"]
+      "args": ["<REPO_PATH>/tools/mcp_server.py"]
+    }
+  }
+}
+```
+
+예시 (`pwd` 결과가 `/Users/shin/llm-wiki-agent`인 경우):
+
+```json
+{
+  "mcpServers": {
+    "wiki": {
+      "command": "python3",
+      "args": ["/Users/shin/llm-wiki-agent/tools/mcp_server.py"]
     }
   }
 }
