@@ -258,7 +258,7 @@ def ingest(source: str, title_override: str | None = None, dry_run: bool = False
     return output_path
 
 
-def ingest_all() -> list[Path]:
+def ingest_all(dry_run: bool = False) -> list[Path]:
     """raw/ 디렉토리의 모든 파일 중 아직 위키 페이지가 없는 것을 처리한다."""
     processed = []
     raw_files = sorted(RAW_DIR.iterdir())
@@ -276,7 +276,7 @@ def ingest_all() -> list[Path]:
             continue
 
         try:
-            output = ingest(str(raw_file))
+            output = ingest(str(raw_file), dry_run=dry_run)
             processed.append(output)
         except Exception as e:
             print(f"[error] {raw_file.name}: {e}")
@@ -285,13 +285,12 @@ def ingest_all() -> list[Path]:
     return processed
 
 
-def ingest_text(text: str, title: str) -> Path:
+def ingest_text(text: str, title: str, dry_run: bool = False) -> Path:
     """인라인 텍스트를 위키 페이지로 변환한다."""
-    # 임시 파일 생성
     tmp_path = WORKSPACE_DIR / "inline_input.txt"
     WORKSPACE_DIR.mkdir(exist_ok=True)
     tmp_path.write_text(text, encoding="utf-8")
-    return ingest(str(tmp_path), title_override=title)
+    return ingest(str(tmp_path), title_override=title, dry_run=dry_run)
 
 
 def main():
@@ -310,7 +309,7 @@ def main():
         print("[dry-run 모드] 실제 파일을 저장하지 않습니다.")
 
     if args.all:
-        results = ingest_all()
+        results = ingest_all(dry_run=args.dry_run)
         print(f"\n완료: {len(results)}개 페이지 생성됨")
         for r in results:
             print(f"  - {r}")
@@ -319,7 +318,7 @@ def main():
         if not args.title:
             print("오류: --text 사용 시 --title 필수")
             sys.exit(1)
-        result = ingest_text(args.text, args.title)
+        result = ingest_text(args.text, args.title, dry_run=args.dry_run)
         print(f"\n생성됨: {result}")
 
     elif args.source:

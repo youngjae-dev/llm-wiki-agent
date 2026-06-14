@@ -24,7 +24,14 @@ my-wiki/
 │   ├── 06-agent-pool-orchestrator.md
 │   ├── 07-harness-and-skills.md
 │   ├── 08-model-context-protocol.md
-│   └── 09-loop-and-hooks.md
+│   ├── 09-loop-and-hooks.md
+│   ├── 10-project-classification.md
+│   ├── 11-architecture-decision-guide.md
+│   ├── 12-architecture-patterns.md
+│   ├── 13-microservices-patterns.md
+│   ├── 14-system-design-basics.md
+│   ├── 15-adr-and-c4-model.md
+│   └── 16-architecture-antipatterns.md
 └── pipeline/
     ├── ingest.py      # raw → wiki 변환 파이프라인
     └── README.md      # 파이프라인 사용법
@@ -150,6 +157,7 @@ version: 1
 | `pipeline` | 처리 파이프라인 |
 | `context-engineering` | 컨텍스트 엔지니어링 |
 | `skills` | 에이전트 스킬 |
+| `architecture-patterns` | 아키텍처 패턴 (Layered, Microservices, CQRS 등) |
 
 ---
 
