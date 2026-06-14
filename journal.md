@@ -43,5 +43,6 @@
 - [2026-06-13 17:25] MVP GUI 실행 확인 — Streamlit localhost:8501, 3-패널 정상 렌더링
 - [2026-06-13 17:30] MVP 스크린샷 캡처 — docs/mvp-screenshot.png 저장
 - [2026-06-13 17:35] AGENTS.md 갱신 — MCP Tool 에이전트 SPEC 섹션 추가 (과제 2 반영)
-- [2026-06-14 16:09] [Hook] Auto-logged write: wiki/test-hook-dummy.md
-- [2026-06-14 16:17] [Hook] Auto-logged write: wiki/test99.md
+- [2026-06-14 00:00] PostToolUse Hook 구현 — tools/journal_hook.py + .claude/settings.json 등록 완료
+- [2026-06-14 00:05] RULES.md 갱신 — journal Hook 자동화 안내 추가 (Section 4)
+- [2026-06-14 00:10] 시스템 검증 완료 — 16페이지·MCP 9 Tool·Hook·pipeline 전체 동작 확인
