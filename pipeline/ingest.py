@@ -127,7 +127,8 @@ def generate_wiki_page(raw_content: str, source_name: str, schema: str, slug: st
 
 슬러그 후보: {full_slug}
 
-출력: 마크다운 파일 내용만 출력하세요. 추가 설명 없이."""
+출력: 마크다운 파일 내용만 출력하세요. 추가 설명 없이.
+중요: 어떠한 도구(Write, Edit 등)도 사용하지 마세요. 텍스트만 출력하세요."""
 
     return call_claude(prompt)
 
