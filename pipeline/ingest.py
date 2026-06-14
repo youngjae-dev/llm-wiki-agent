@@ -87,10 +87,19 @@ def call_claude(prompt: str, timeout: int = 240) -> str:
 
     try:
         response = json.loads(result.stdout)
-        return response.get("result", "")
+        text = response.get("result", "")
     except json.JSONDecodeError:
-        # JSON 파싱 실패 시 stdout 원문 반환
-        return result.stdout
+        text = result.stdout
+
+    # Claude가 마크다운 출력을 코드펜스로 감싸는 경우 제거
+    text = text.strip()
+    if text.startswith("```markdown"):
+        text = text[len("```markdown"):].lstrip("\n")
+    elif text.startswith("```"):
+        text = text[3:].lstrip("\n")
+    if text.endswith("```"):
+        text = text[:-3].rstrip("\n")
+    return text
 
 
 def generate_wiki_page(raw_content: str, source_name: str, schema: str, slug: str) -> str:
