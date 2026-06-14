@@ -20,7 +20,7 @@
 ### Step 1 — 클론 및 설치
 
 ```bash
-git clone https://github.com/<your-username>/llm-wiki-agent.git
+git clone https://github.com/youngjae-dev/llm-wiki-agent.git
 cd llm-wiki-agent
 pip install streamlit fastmcp
 ```
