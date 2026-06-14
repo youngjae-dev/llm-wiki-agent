@@ -145,10 +145,10 @@ raw/ → pipeline/ingest.py → wiki/*.md → index.md
 
 ```bash
 # 단일 파일
-python pipeline/ingest.py "raw/파일명.pdf"
+python3 pipeline/ingest.py "raw/파일명.pdf"
 
 # 전체 raw/ 디렉토리 (미처리 파일만)
-python pipeline/ingest.py --all
+python3 pipeline/ingest.py --all
 ```
 
 파이프라인은 자동으로:
