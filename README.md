@@ -263,6 +263,47 @@ SCHEMA.md         ← 위키 구조 규약 (프론트매터, 파일명, 태그)
 
 ---
 
+## Hook 설명
+
+`.claude/settings.json`에 **PostToolUse Hook**이 등록되어 있습니다.
+
+### 동작 방식
+
+`wiki/*.md` 파일이 저장될 때마다 Claude Code가 자동으로 `tools/journal_hook.py`를 실행합니다.
+
+```
+에이전트가 wiki/*.md 저장 (Write 도구)
+    ↓
+PostToolUse Hook 발동
+    ↓
+tools/journal_hook.py 실행 (stdin으로 파일 경로 수신)
+    ↓
+journal.md에 자동 append
+```
+
+### journal.md 기록 구조
+
+Hook과 에이전트가 역할을 나눠 기록합니다:
+
+```
+- [2026-06-15 10:30] [Hook] Auto-logged write: wiki/17-new-topic.md
+- [2026-06-15 10:30] Ingested raw/my-doc.pdf → wiki/17-new-topic.md — API 게이트웨이 패턴 요약
+```
+
+| 기록 주체 | 내용 | 필수 여부 |
+|---|---|---|
+| Hook (자동) | 저장 타임스탬프 + 파일명 | 항상 자동 |
+| 에이전트 (수동) | 원본 파일명, 변환 이유/요약 | 필수 |
+
+Hook이 "언제 저장됐는지"를 보장하고, 에이전트가 "왜/무엇을 했는지"를 반드시 추가합니다.
+두 기록이 합쳐져 나중에 로그만 봐도 전체 히스토리를 파악할 수 있습니다.
+
+### 중복 방지
+
+같은 날 동일 slug에 대한 Hook 기록이 이미 있으면 skip합니다.
+
+---
+
 ## 데모
 
 아래는 시스템 아키텍처 설계 지식 베이스를 이 도구로 서빙한 화면입니다.
