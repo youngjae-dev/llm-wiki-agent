@@ -22,6 +22,11 @@
 ```bash
 git clone https://github.com/youngjae-dev/llm-wiki-agent.git
 cd llm-wiki-agent
+
+# 가상환경 사용 권장
+python3 -m venv venv
+source venv/bin/activate   # Windows: venv\Scripts\activate
+
 pip install streamlit fastmcp
 ```
 
@@ -53,10 +58,10 @@ Claude가 `raw/` 파일을 분석해 `wiki/` 페이지를 자동 생성합니다
 
 ```bash
 # 단일 파일
-python pipeline/ingest.py "raw/내문서.md"
+python3 pipeline/ingest.py "raw/내문서.md"
 
 # raw/ 전체
-python pipeline/ingest.py --all
+python3 pipeline/ingest.py --all
 ```
 
 ### Step 4 — 뷰어에서 확인
@@ -66,6 +71,9 @@ streamlit run tools/app.py
 ```
 
 브라우저에서 `http://localhost:8501` 열기 → 좌측 사이드바에서 새 페이지 확인
+
+> ⚠️ 우측 채팅 패널은 Claude CLI(`claude`)를 subprocess로 호출합니다.
+> Claude CLI가 설치되지 않았거나 로그인되지 않은 경우 채팅 패널만 동작하지 않습니다. 나머지 뷰어 기능은 정상 동작합니다.
 
 ### Step 5 — 검증
 
@@ -142,12 +150,18 @@ llm-wiki-agent/
 
 `~/Library/Application Support/Claude/claude_desktop_config.json`:
 
+```bash
+# 절대경로 확인 방법
+cd llm-wiki-agent && pwd
+# 예: /Users/yourname/llm-wiki-agent
+```
+
 ```json
 {
   "mcpServers": {
     "wiki": {
-      "command": "python",
-      "args": ["/절대경로/llm-wiki-agent/tools/mcp_server.py"]
+      "command": "python3",
+      "args": ["/Users/yourname/llm-wiki-agent/tools/mcp_server.py"]
     }
   }
 }
@@ -188,7 +202,7 @@ claude
 cp ~/my-notes.md raw/
 
 # 2. 파이프라인 실행
-python pipeline/ingest.py "raw/my-notes.md"
+python3 pipeline/ingest.py "raw/my-notes.md"
 
 # 3. 생성 확인
 ls wiki/ | tail -1
@@ -200,19 +214,19 @@ ls wiki/ | tail -1
 # poppler 필요: brew install poppler
 cp ~/my-paper.pdf raw/
 
-python pipeline/ingest.py "raw/my-paper.pdf"
+python3 pipeline/ingest.py "raw/my-paper.pdf"
 ```
 
 ### 텍스트 직접 입력
 
 ```bash
-python pipeline/ingest.py --text "학습 내용..." --title "오늘 배운 것"
+python3 pipeline/ingest.py --text "학습 내용..." --title "오늘 배운 것"
 ```
 
 ### 드라이런 (파일 저장 없이 미리 보기)
 
 ```bash
-python pipeline/ingest.py "raw/my-doc.md" --dry-run
+python3 pipeline/ingest.py "raw/my-doc.md" --dry-run
 ```
 
 ---
@@ -301,6 +315,21 @@ Hook이 "언제 저장됐는지"를 보장하고, 에이전트가 "왜/무엇을
 ### 중복 방지
 
 같은 날 동일 slug에 대한 Hook 기록이 이미 있으면 skip합니다.
+
+### ⚠️ 주의: Hook 적용 범위
+
+Hook은 **`llm-wiki-agent/` 디렉토리 안에서 `claude`를 실행할 때만 동작**합니다.
+`.claude/settings.json`은 프로젝트 루트 기준으로 로드되므로, 다른 디렉토리에서 실행하면 Hook이 발동하지 않습니다.
+
+```bash
+# ✅ Hook 동작
+cd llm-wiki-agent
+claude
+
+# ❌ Hook 미동작
+cd ~
+claude
+```
 
 ---
 
