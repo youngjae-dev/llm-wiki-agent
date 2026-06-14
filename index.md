@@ -27,6 +27,13 @@
 | [[07-harness-and-skills\|07. Harness Engineering & Skills]] | `harness` `skills` `agent-design` | Harness Engineering의 개념과 Contract-Driven Iteration, Skill 설계 |
 | [[08-model-context-protocol\|08. Model Context Protocol (MCP)]] | `mcp` `context-engineering` | MCP의 배경, 구조, 트레이드오프, Tool Calling 원칙 |
 | [[09-loop-and-hooks\|09. Loop & Hooks]] | `loop` `hooks` `agentic-coding` | 에이전트 생애주기 Hook 이벤트와 자동화 Loop 활용 패턴 |
+| [[10-project-classification\|10. 프로젝트 특성 분류]] | `agent-design` `sdlc` `architecture-patterns` | 좋은 아키텍처는 프로젝트의 성격을 정확히 이해하는 것에서 시작한다 |
+| [[11-architecture-decision-guide\|11. 아키텍처 스타일 결정 가이드]] | `architecture-patterns` `agent-design` `sdlc` | 프로젝트 분류 결과를 입력으로 아키텍처 스타일을 선택하는 가이드 |
+| [[12-architecture-patterns\|12. 아키텍처 패턴]] | `architecture-patterns` `agent-design` `sdlc` | Layered · Microservices · Event-Driven · CQRS 핵심 패턴 정리 |
+| [[13-microservices-patterns\|13. 마이크로서비스 보조 패턴]] | `architecture-patterns` `agent-design` `sdlc` | Saga · API Gateway · Circuit Breaker 등 보조 패턴 |
+| [[14-system-design-basics\|14. 시스템 설계 기초]] | `architecture-patterns` `sdlc` `agent-design` | 캐싱 · DB 스케일링 · 통신 · 로드 밸런싱 기초 개념 |
+| [[15-adr-and-c4-model\|15. ADR & C4 모델]] | `architecture-patterns` `agent-design` `sdlc` | 아키텍처 결정 기록(ADR)과 C4 모델 시각화 |
+| [[16-architecture-antipatterns\|16. 아키텍처 안티패턴]] | `architecture-patterns` `agent-design` `sdlc` | 피해야 할 설계 실수 6가지 (Big Ball of Mud 외) |
 
 ---
 

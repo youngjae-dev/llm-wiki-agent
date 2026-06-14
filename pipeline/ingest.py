@@ -192,7 +192,7 @@ def save_workspace_artifact(stage: str, content: str) -> None:
     print(f"  [workspace] {artifact_path.name}")
 
 
-def ingest(source: str, title_override: str | None = None) -> Path:
+def ingest(source: str, title_override: str | None = None, dry_run: bool = False) -> Path:
     """
     단일 파일을 수집하여 위키 페이지를 생성한다.
 
@@ -232,6 +232,10 @@ def ingest(source: str, title_override: str | None = None) -> Path:
     save_workspace_artifact("01_wiki_draft", wiki_content)
 
     # 4. 파일 저장
+    if dry_run:
+        print("  [3/4] [dry-run] 저장 건너뜀 — 생성될 내용 미리보기:")
+        print("\n" + wiki_content[:500] + "\n...(이하 생략)")
+        return output_path
     print("  [3/4] wiki/ 에 저장 중...")
     WIKI_DIR.mkdir(exist_ok=True)
     output_path.write_text(wiki_content, encoding="utf-8")
@@ -319,7 +323,7 @@ def main():
         print(f"\n생성됨: {result}")
 
     elif args.source:
-        result = ingest(args.source)
+        result = ingest(args.source, dry_run=args.dry_run)
         print(f"\n생성됨: {result}")
 
     else:

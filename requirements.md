@@ -18,13 +18,7 @@ fastmcp>=0.3.0
 ## 설치 방법
 
 ```bash
-pip install streamlit fastmcp
-```
-
-또는 `requirements.txt`가 있는 경우:
-
-```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ## Claude CLI 설치
