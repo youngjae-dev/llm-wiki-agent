@@ -48,10 +48,11 @@ version: 1
 - index.md 페이지 목록에 새 항목 추가:
   `| [[NN-slug]] | 태그 | 한 줄 요약 |`
 
-**Step 6 — journal.md 기록**
+**Step 6 — journal.md 기록 (선택)**
 ```
-- [YYYY-MM-DD HH:MM] Ingested raw/<파일명> → wiki/NN-slug.md
+- [YYYY-MM-DD HH:MM] Ingested raw/<파일명> → wiki/NN-slug.md — <요약 한 줄>
 ```
+> Hook이 기본 write 이벤트를 자동 기록함. 변환 이유·요약 등 추가 컨텍스트가 있을 때만 수동 append.
 
 ## 완료 보고 형식
 

@@ -67,6 +67,10 @@
 - [2026-06-15 10:40] Query: "캐싱 전략?" — wiki/14-system-design-basics.md 참조
 ```
 
+> ℹ️ **Hook 자동화**: `wiki/*.md` 파일이 저장될 때 PostToolUse Hook(`tools/journal_hook.py`)이
+> 자동으로 `[Hook] Auto-logged write: wiki/파일명.md` 항목을 기록한다.
+> 에이전트는 추가 컨텍스트(변경 이유 등)가 있을 때만 수동으로 append하면 된다.
+
 ---
 
 ## 5. SKILL 실행 기준

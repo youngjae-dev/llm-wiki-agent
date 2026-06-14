@@ -29,10 +29,11 @@ version: (기존 번호 + 1)
 date: 오늘 날짜 (YYYY-MM-DD)
 ```
 
-**Step 4 — 저장 후 journal 기록**
+**Step 4 — 저장 후 journal 기록 (선택)**
 ```
 - [YYYY-MM-DD HH:MM] Updated wiki/NN-slug.md v(N)→v(N+1) — <변경 이유 한 줄>
 ```
+> Hook이 기본 write 이벤트를 자동 기록함. 변경 이유 등 추가 컨텍스트가 있을 때만 수동 append.
 
 ## 완료 보고 형식
 
