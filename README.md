@@ -85,7 +85,7 @@ ls wiki/
 tail -5 journal.md
 
 # MCP 서버 동작 확인
-python tools/mcp_server.py
+python3 tools/mcp_server.py
 ```
 
 ---
