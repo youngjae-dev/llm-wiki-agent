@@ -43,3 +43,4 @@
 - [2026-06-13 17:25] MVP GUI 실행 확인 — Streamlit localhost:8501, 3-패널 정상 렌더링
 - [2026-06-13 17:30] MVP 스크린샷 캡처 — docs/mvp-screenshot.png 저장
 - [2026-06-13 17:35] AGENTS.md 갱신 — MCP Tool 에이전트 SPEC 섹션 추가 (과제 2 반영)
+- [2026-06-14 16:09] [Hook] Auto-logged write: wiki/test-hook-dummy.md

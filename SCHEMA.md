@@ -9,32 +9,51 @@
 
 ```
 my-wiki/
-├── AGENTS.md          # LLM 유지보수 에이전트 행동 지침
+├── RULES.md           # 최우선 운영 규칙 (모든 에이전트가 먼저 읽음)
+├── AGENTS.md          # LLM 유지보수 에이전트 역할·권한 명세
 ├── SCHEMA.md          # 이 파일 — 위키 구조·운영 규칙
 ├── index.md           # 위키 전체 색인 (자동 갱신)
 ├── journal.md         # 유지보수 로그 (append-only, 절대 수정 금지)
-├── raw/               # 원본 소스 자료 (PDF, 텍스트 등)
-├── specs/             # 요구사항·설계 명세
-├── wiki/              # 위키 페이지 (핵심 콘텐츠)
-│   ├── 01-vibe-coding-and-agentic-coding.md
-│   ├── 02-sdlc-pipeline.md
-│   ├── 03-cli-subprocess.md
-│   ├── 04-plan-mode-sequential-agents.md
-│   ├── 05-agent-specifications.md
-│   ├── 06-agent-pool-orchestrator.md
-│   ├── 07-harness-and-skills.md
-│   ├── 08-model-context-protocol.md
-│   ├── 09-loop-and-hooks.md
-│   ├── 10-project-classification.md
-│   ├── 11-architecture-decision-guide.md
-│   ├── 12-architecture-patterns.md
-│   ├── 13-microservices-patterns.md
-│   ├── 14-system-design-basics.md
-│   ├── 15-adr-and-c4-model.md
-│   └── 16-architecture-antipatterns.md
-└── pipeline/
-    ├── ingest.py      # raw → wiki 변환 파이프라인
-    └── README.md      # 파이프라인 사용법
+├── wiki_core.py       # 공유 I/O 라이브러리 (MCP 서버 + Streamlit 공용)
+├── requirements.txt   # pip 설치 목록
+├── requirements.md    # 의존성 상세 설명
+│
+├── .claude/
+│   ├── settings.json                  # PostToolUse Hook 등록
+│   └── commands/
+│       ├── wiki-ingest.md             # SKILL: raw → wiki 변환
+│       ├── wiki-query.md              # SKILL: 위키 검색 및 답변
+│       └── wiki-update.md             # SKILL: 기존 페이지 업데이트
+│
+├── tools/             # 시각화·자동화 도구
+│   ├── app.py         # Streamlit 3-패널 뷰어
+│   ├── mcp_server.py  # FastMCP 서버 (9개 Tool)
+│   └── journal_hook.py  # PostToolUse Hook 스크립트
+│
+├── pipeline/
+│   ├── ingest.py      # raw → wiki 변환 파이프라인 (Claude CLI 활용)
+│   └── README.md      # 파이프라인 사용법
+│
+├── raw/               # 원본 소스 자료 (PDF, 텍스트 등) — 수정 금지
+├── demo/
+│   └── screenshot.png # 실행 화면 캡처
+└── wiki/              # 위키 페이지 (핵심 콘텐츠)
+    ├── 01-vibe-coding-and-agentic-coding.md
+    ├── 02-sdlc-pipeline.md
+    ├── 03-cli-subprocess.md
+    ├── 04-plan-mode-sequential-agents.md
+    ├── 05-agent-specifications.md
+    ├── 06-agent-pool-orchestrator.md
+    ├── 07-harness-and-skills.md
+    ├── 08-model-context-protocol.md
+    ├── 09-loop-and-hooks.md
+    ├── 10-project-classification.md
+    ├── 11-architecture-decision-guide.md
+    ├── 12-architecture-patterns.md
+    ├── 13-microservices-patterns.md
+    ├── 14-system-design-basics.md
+    ├── 15-adr-and-c4-model.md
+    └── 16-architecture-antipatterns.md
 ```
 
 ---
