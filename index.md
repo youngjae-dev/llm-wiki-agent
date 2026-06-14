@@ -82,4 +82,4 @@
 
 ---
 
-*Last updated: 2026-06-13 | Maintained by LLM agents per [AGENTS.md](AGENTS.md)*
+*Last updated: 2026-06-14 | Maintained by LLM agents per [AGENTS.md](AGENTS.md)*
